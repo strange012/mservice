@@ -1,0 +1,6 @@
+[submodule "frontend-business"]
+	path = frontend-business
+	url = https://Monyk015@bitbucket.org/courseworkandpractice/frontend-business.git
+[submodule "backend"]
+	path = backend
+	url = https://Monyk015@bitbucket.org/courseworkandpractice/backend.git

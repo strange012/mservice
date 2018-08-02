@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+    environment:
+        POSTGRES_PASSWORD: root
+        POSTGRES_USER: postgres
+    ports:
+        - "5432:5432"
+  api:
+    build: ./backend
+    command: flask run --host=0.0.0.0
+    volumes:
+      - ./backend:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+        DB_CONNECTION: postgresql://postgres:root@db:5432/postgres
+  front:
+    build: ./frontend-business
+    command: npm run dev
+    volumes:
+      - ./frontend-business:/app
+    ports:
+      - "8080:8080"
